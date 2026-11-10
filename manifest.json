@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "New Yorker Focus",
+  "version": "1.1",
+  "description": "Hides images and videos that are not part of the article on newyorker.com. Click the toolbar button to turn it on or off.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "newyorker-focus@local",
+      "strict_min_version": "121.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.newyorker.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_title": "New Yorker Focus (click to toggle)",
+    "default_icon": "icons/icon.svg"
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.newyorker.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
